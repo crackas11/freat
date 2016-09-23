@@ -1,0 +1,14 @@
+<ion-view>
+<div class="bar bar-header">
+    <button ng-click="settings()" class="button button-icon icon ion-android-settings"></button>
+    <div class="h1 title">CODES</div>
+  </div>
+  <ion-content class="has-header">
+    <ion-list>
+    <ion-item class="item-remove-animate item-avatar" ng-repeat="detail in details track by $index" type="item-text-wrap">
+    <h2><a>{{detail.nom}}</a></h2>
+    <p>{{detail.ville}} ({{detail.departement}})</p>
+    </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

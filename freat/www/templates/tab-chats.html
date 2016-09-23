@@ -1,0 +1,20 @@
+<ion-view view-title="Chats">
+<div class="bar bar-header">
+    <div class="h1 title">{{name}}</div>
+    <button ng-click="dash()" class="button button-icon icon ion-ios-home-outline"></button>
+  </div>
+  <ion-content class="has-header">
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in details" type="item-text-wrap" href="#/chats/{{chat.second_id}}">
+        <img ng-src="{{chat.face}}">
+        <h2>{{chat.second_id}}</h2>
+        <p>{{chat.last_message}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

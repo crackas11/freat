@@ -1,0 +1,26 @@
+<ion-view style="background-color:#FAFAFA;" title="dash">
+<div  class=" mybar bar bar-header">
+    <p style="width:100%;text-align:center;margin-left:4rem;"> <img style="width:7rem;" src="img/logo.jpg"></p>
+    <button ng-click="account()" class="button button-icon icon ion-android-menu"></button>
+  </div>
+   <div ng-show="spinner" style="position:absolute;z-index:100;text-align:center;width:100%;height:100%;background-color:#EEEEEE;opacity:0.8;"><img style="margin-top:100%;" src="img/default.gif"></div>
+  <ion-content  class=" indexed has-header">
+  <div>
+      <label style="width:70%;border:1px black solid;margin: 0 auto;background-color:#FAFAFA;" class="item item-input">
+            <i  style="color:black;" class="icon ion-ios-search-strong placeholder-icon"></i>
+            <input placeholder="Rechercher" ng-model="data.search" ng-keyup="test()" type="text">
+        </label>
+  </div>
+    <ion-list class="padding">
+    <ion-item  ng-click="redirect({{detail.id}})" class="myitem item item-icon-right item-thumbnail-left" ng-repeat="detail in details track by $index" type="item-text-wrap">
+    <img src="img/avatar.jpg">
+    <h2><a style="text-decoration:none;color:black;">{{detail.nom}}</a></h2>
+    <p style="opacity:0.5;color:black;">{{detail.type_cuisine}}</p>
+    <p style="opacity:0.5;color:black;">{{detail.ville}} ({{detail.departement}})</p>
+     <p style="color:green;">{{detail.balance}}&euro;</p>
+     <i  style="color:black;padding:0;" class="icon  item-icon-right ion-ios-arrow-right"></i>
+    </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
+

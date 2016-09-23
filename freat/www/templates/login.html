@@ -1,0 +1,26 @@
+<ion-view style="background-color:#F5F5F5;" on-swipe-left view-title="Log in">
+<div style="border:none;background-color:#F5F5F5;" class="bar bar-header">
+	<div class="h1 title"></div>
+ </div>
+ <ion-content >
+
+	<p style="text-align:center;margin-top:25%;margin-bottom:1rem;font-size:1.5rem;color:black;"><img style="width:74px; height:54px" src="img/logo.jpg"></p>
+	<div style="padding: 1rem 2rem;background-color:#F5F5F5;margin:2rem 1rem;">
+		<label class=" myitem item item-input item-stacked-label padding">
+		    <span style="font-size:1.5rem;" class="input-label">USERNAME</span>
+		    <input id="login_input" ng-model="data.username" type="text" >
+		  </label>
+		  <label class=" myitem item item-input item-stacked-label padding">
+		    <span style="font-size:1.5rem;" class="input-label">PASSWORD</span>
+		    <input id="login_input2" ng-model="data.password" type="password">
+		  </label>
+		  <p style="text-align:center;"><input type="checkbox">Rester connecté</p>
+		  <p style="text-align:center;"><a href="#" style="text-decoration:none;">Mot de passe oublié?</a></p>
+		<div class=" myitem padding">
+		     <button style="background-color:#387ef5;color:#F5F5F5;width:100%;border:none;padding:1rem;margin-bottom:1rem;" ng-click="submit();">CONNEXION</button>
+		     <p style="text-align:center;" >PAS DE COMPTE? <a ng-click="register()" style="text-decoration:none">INSCRIPTION</a></p>
+		 </div>
+		 <p ng-show="show" style="color:red">{{value}}</p>
+	 </div>    
+ </ion-content>
+</ion-view>

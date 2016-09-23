@@ -1,0 +1,18 @@
+<ion-view>
+<div class="bar bar-header">
+    <button ng-click="dash()" class="button button-icon icon ion-android-home"></button>
+    <div class="h1 title">{{detail.nom}}</div>
+  </div>
+  <ion-content class="has-header has-footer padding">
+    
+    <h2 style="text-align:center;">{{data.id}}</h2>
+    <label class=" myitem item item-input item-stacked-label padding">
+    <span class="input-label">Combien voulez vous utiliser</span>
+    <input ng-model="data.amount" type="text" placeholder="15 euro/jour maximum" ng-disabled="val">
+  </label>
+  <div class=" myitem padding">
+     <button style="background-color:#81f491;color:#EEE;" ng-click="bind()" class="button button-block">valider</button>
+ </div>
+
+  </ion-content>    
+</ion-view>

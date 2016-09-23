@@ -1,0 +1,38 @@
+<ion-view  view-title="detail">
+<button ng-click="dash()" ></button>
+<div class=" mybar bar bar-header">
+    <button ng-click="dash()" class="button button-icon icon ion-arrow-left-c"></button>
+    <div class="h1 title">{{detail.nom}} - <span style="color:green;">{{detail.balance}}&euro;</span></div>
+  </div>
+  <div ng-show="spinner" id="spinner"><img style="margin-top:100%;" src="img/default.gif"></div>
+<ion-content  class="indexed has-header">
+
+<ui-gmap-google-map  center='map.center' zoom='map.zoom' draggable="false">
+</ui-gmap-google-map>
+<div class="  item ">
+<div class="row">
+  <div ng-class="classC" class="col">
+  <h3 ng-click="changeGiftC()" style="text-align:center;"><strong><a style="text-decoration:none;color:black;" href="">DERNIERS FREATERS</a></strong></h3>
+  </div>
+  <div ng-class="classB"   class="col">
+    <h3 ng-click="changeGiftB()" style="text-align:center;"><strong><a style="text-decoration:none;color:black;" href="">DERNIERS DONS</a></strong></h3>
+  </div>
+  <div ng-class="class"  class="col">
+    <h3 ng-click="changeGift()" style="text-align:center;"><strong><a style="text-decoration:none;color:black;" href="">TOP DONS</a></strong></h3>
+  </div>
+</div>
+<div  ng-class="listClass">
+  <ion-list>
+        <ion-item style="padding:0;min-height:0;margin:2rem;margin-right:0;margin-left:0;" class="dash-item item-remove-animate item-avatar" ng-repeat="user in users track by $index">
+           <p><a style="text-decoration:none;color:black;" href="#/user/{{user.giver_username}}">{{user.giver_username}}</a> <span ng-hide="took" ng-show="don">a donne</span> <span ng-hide="don" ng-show="took">a pris</span> <strong>{{user.amount}} &euro; </strong>il y a 10 minutes.</p>
+        </ion-item>
+  </ion-list>
+    </div>
+    <p style="text-align:center;"><button style="margin:0 auto;" ng-click="loadMore()" class="button button-icon icon ion-ios-arrow-down"></button></p>
+  </div>
+  <p style="text-align:center;"><a style="color:green;" class="item item-icon-left assertive">
+    <i style="margin-left:9rem;" class="icon ion-ios-star"></i>
+    cagnotte : {{detail.balance}}&euro;</a></p>
+<div><p>{{message}}</p></div>    
+</ion-content>
+</ion-view>
