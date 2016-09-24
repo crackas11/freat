@@ -1,5 +1,8 @@
 # freat
 
+### freat est une application basée sur le principe du café en suspens.
+### il est possible de laisser en dons le montant souhaité dans un restaurant que tout le monde en cas de besoin pourra utiliser pour consommer dans une limite hebdomadaire pré-etablie.
+
 ## page de login
 ![Zozor](http://crackas.esy.es/img/img1.png)
 ## page d'inscription
