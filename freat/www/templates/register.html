@@ -7,20 +7,20 @@
   <p style="text-align:center;margin-top:25%;margin-bottom:1rem;font-size:1.5rem;color:black;"><img style="width: 74px; height: 54px" src="img/logo.jpg"></p>
   <div style="padding: 1rem 2rem;background-color:#F5F5F5;margin:2rem 1rem;">
     <label class=" myitem item item-input item-stacked-label padding">
-        <span class="input-label">USERNAME</span>
+        <span class="input-label">Username</span>
         <input style="padding:0.5rem;margin:1rem auto;background-color:#F5F5F5;border:1px black solid;margin-bottom:0;" ng-model="data.username" type="text" >
       </label>
       <label class=" myitem item item-input item-stacked-label padding">
-        <span class="input-label">EMAIL</span>
+        <span class="input-label">Email</span>
         <input style="padding:0.5rem;margin:1rem auto;background-color:#F5F5F5;border:1px black solid;margin-bottom:0;" ng-model="data.email" type="text" >
       </label>
       <label class=" myitem item item-input item-stacked-label padding">
-        <span class="input-label">PASSWORD</span>
+        <span class="input-label">Password</span>
         <input style="padding:0.5rem;margin:1rem auto;background-color:#F5F5F5;border:1px black solid;margin-bottom:0;" ng-model="data.password" type="password">
       </label>
       <p style="text-align:center;"><input style="width:2rem;border-color:red;" ng-click="check()" ng-model="data.checked" type="checkbox">I accept the terms of use</p>
     <div class=" myitem padding">
-         <button style="background-color:black;color:#F5F5F5;width:100%;border:none;padding:1rem;margin-bottom:1rem;">SIGN UP</button>
+         <button ng-click="submit()" style="background-color:black;color:#F5F5F5;width:100%;border:none;padding:1rem;margin-bottom:1rem;">Sign up</button>
      </div>
    </div>    
  </ion-content>

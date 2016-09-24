@@ -117,7 +117,6 @@ $scope.changeGiftB = function(){
         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       })
       .then(function(data){
-
         $scope.map.center.latitude = data.data[0].latitude;
         $scope.map.center.longitude = data.data[0].longitude;
       },function(error){
@@ -133,8 +132,6 @@ $scope.changeGiftB = function(){
     })
     .then(function(data){
       $scope.spinner = false;
-      console.log($scope.data);
-      console.log(data.data);
       $scope.users = data.data;
     },function(error){
       console.log(error);
@@ -191,24 +188,20 @@ $scope.changeGiftB = function(){
     $state.go("store",{id : iD});
   };
 
-  //$scope.details = dashuser.all();
-  //console.log(dashuser.all());
-  
-
 
   posOptions = {timeout: 10000, enableHighAccuracy: false};
   $cordovaGeolocation
     .getCurrentPosition(posOptions)
     .then(function (position) {
-      lat  = position.coords.latitude
-      long = position.coords.longitude
-      url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+long;
+      var lat  = position.coords.latitude
+      var longe = position.coords.longitude
+      console.log(position);
+      url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+longe;
       $http({
         method: 'GET',
         url: url
       })
       .then(function(data){
-        console.log(data.data);
        $scope.data.code_postal = data.data.results[0].address_components[6].long_name;
        $http({
          method: 'POST',
@@ -220,7 +213,6 @@ $scope.changeGiftB = function(){
         .then(function(data){
           $scope.details = data.data;
           $scope.detailss = data.data;
-          console.log($scope.detailss);
           $scope.spinner = false;
         },function(){
 
@@ -289,7 +281,6 @@ $scope.changeGiftB = function(){
   
 })
 .controller('LogCtrl',['$scope', 'authService', '$state', 'localStorageService', function($scope,authService,$state,localStorageService){
-  console.log(localStorageService);
   $scope.show = false;
   $scope.data = {};
   if(localStorageService.get("user") !== undefined )
@@ -304,26 +295,33 @@ $scope.changeGiftB = function(){
   };
 
   $scope.submit = function(){
-    /*if($scope.data.username === "crackou" && $scope.data.password === "azerty10")
-    {
-      localStorageService.set("userId", $scope.data.username)
-      console.log(localStorageService.get("userId"));
-      $state.go("dash");
-    }*/
     authService.login($scope.data);
   };
 }])
 .controller('registerCtrl', function($scope,authService,$state){
    $scope.data = {};
   $scope.submit = function(){
+    console.log("dddddd");
    authService.register($scope.data);
   };
   $scope.login = function(){
    $state.go("login");
   };
 })
-.controller('AccountCtrl', function($scope,$state,authService) {
+.controller('AccountCtrl', function($scope,$state,authService, userService, localStorageService) {
   $scope.data = {};
+  $scope.spinner = true;
+  $scope.data.username = localStorageService.get("user");
+  console.log($scope.data.username);
+  userService.getUser($scope.data)
+  .then(function(data){
+    console.log(data.data);
+  console.log($scope.data.username);
+    $scope.user = data.data[0];
+    $scope.spinner = false;
+  } ,function(error){
+
+    });
 
   $scope.dash = function(){
     $state.go("dash");

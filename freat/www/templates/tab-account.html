@@ -3,51 +3,48 @@
     <button ng-click="dash()" class="button button-icon icon ion-arrow-left-c"></button>
     <div class="h1 title">{{name}}</div>
   </div>
+   <div ng-show="spinner" style="position:absolute;z-index:100;text-align:center;width:100%;height:100%;background-color:#EEEEEE;opacity:0.8;"><img style="margin-top:100%;" src="img/default.gif"></div>
   <ion-content  class="has-header">
     <div style="border-bottom: 1px #e6b500 solid;color:#e6b500;margin:0.5rem auto;padding:0;line-height:0.5rem;">
       <p style="margin:0.5rem 0.5rem;">MON COMPTE</p>
     </div>
     <div style="border-bottom:1px #AAAAAA solid;" class=" myitem item item-input item-stacked-label padding">
         <p style="font-size:1.1rem;">Nom</p>
-        <p>crackou</p>
+        <p>{{user.nom}} {{user.prenom}}</p>
       </div>
       <div style="border-bottom:1px #AAAAAA solid;" class=" myitem item item-input item-stacked-label padding">
         <p style="font-size:1.1rem;">Nom d'utilisateur</p>
-        <p>lascrackas</p>
+        <p>{{user.username}}</p>
       </div>
       <div style="border-bottom:1px #AAAAAA solid;" class=" myitem item item-input item-stacked-label padding">
         <p style="font-size:1.1rem;">Email</p>
-        <p>mouradaliouachene@gmail.com</p>
+        <p>{{user.email}}</p>
       </div>
       <div style="border:none;" class=" myitem item item-input item-stacked-label padding">
         <p style="font-size:1.1rem;">Numero de telephone</p>
-        <p>0651924093</p>
+        <p>{{user.phone}}</p>
       </div>
       <div style="border-bottom: 1px #e6b500 solid;color:#e6b500;margin:0.5rem auto;padding:0;line-height:0.5rem;">
       <p style="margin:0.5rem 0.5rem;">MES DETAILS</p>
     </div>
-    <div style="border-bottom:1px #AAAAAA solid;" class=" myitem item item-input item-stacked-label padding">
+    <div style="border:none" class=" myitem item item-input item-stacked-label padding">
         <p style="font-size:1.1rem;">Mes dons</p>
-        <p>1245&euro;</p>
-      </div>
-      <div style="border:none;" class=" myitem item item-input item-stacked-label padding">
-        <p style="font-size:1.1rem;">Mes codes</p>
-        <p>13505906559405</p>
+        <p>{{user.total_don}} &euro;</p>
       </div>
       <div style="border-bottom: 1px #e6b500 solid;color:#e6b500;margin:0.5rem auto;padding:0;line-height:0.5rem;">
       <p style="margin:0.5rem 0.5rem;">MES RESEAUX SOCIAUX</p>
     </div>
     <div style="border-bottom:1px #AAAAAA solid;" class=" myitem item item-input item-stacked-label padding">
         <p style="font-size:1.1rem;">Facebook</p>
-        <p>Syrus le virus</p>
+        <p>{{user.facebook_id}}</p>
       </div>
       <div style="border-bottom:1px #AAAAAA solid;" class=" myitem item item-input item-stacked-label padding">
         <p style="font-size:1.1rem;">Twitter</p>
-        <p>crackas</p>
+        <p>{{user.twitter_id}}</p>
       </div>
       <div style="border-bottom:1px #AAAAAA solid;" class=" myitem item item-input item-stacked-label padding">
         <p style="font-size:1.1rem;">Snapchat</p>
-        <p>lascrackas</p>
+        <p>{{user.snapchat_id}}</p>
       </div>
       <div style="text-align:center;font-size:1.4rem;margin-top:2rem;">
         <p><a ng-click="logout()" style="text-decoration:none;" href="">deconnexion</a></p>

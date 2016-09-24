@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','angularSpinners','uiGmapgoogle-maps','ui.bootstrap', 'starter.controllers', 'starter.services', 'ngCookies','ngCordova', 'ngSanitize', 'LocalStorageModule'])
+angular.module('starter', ['ionic','angularSpinners','uiGmapgoogle-maps','ui.bootstrap', 'starter.controllers','starter.services', 'ngCookies','ngCordova', 'ngSanitize', 'LocalStorageModule'])
 
 .run(function($ionicPlatform, $rootScope,$state,localStorageService) {
   $ionicPlatform.ready(function() {
@@ -21,13 +21,9 @@ angular.module('starter', ['ionic','angularSpinners','uiGmapgoogle-maps','ui.boo
       StatusBar.styleDefault();
     }
     $rootScope.$on('$stateChangeStart', function(event, tostate, toparams){
-      if (tostate.url === '/login' || tostate.url === '/register')
-      {
-        if(tostate.url === '/login' && localStorageService.get("userId") !== undefined)
-          $state.go('dash');
-      
-      }
-      else if(tostate.data.requireLogin === true && localStorageService.get("userId") === undefined){
+
+      console.log(tostate.url);
+      if(tostate.data.requireLogin === true && localStorageService.get("userId") === null){
           event.preventDefault();
           $state.go('login');
         }

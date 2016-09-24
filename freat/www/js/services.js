@@ -76,6 +76,7 @@ angular.module('starter.services', [])
   
   return {
     getUser: function(datas){
+      console.log("dans getUser");
       return $http({
       method: 'POST',
       url: 'http://crackas.esy.es/user.php',
@@ -86,50 +87,7 @@ angular.module('starter.services', [])
     }
   }
 })
-.factory('conversationService', function(messageService) {
-  var conversation;
-  return {
-    conversation: function(){
-      return conversation;
-    }
-  };
-})
-.factory('Chats', function(){
-  var chats = [{
-    id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
-  }, {
-    id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
-  }];
-
-
-  return {
-    all: function(){
-      return chats;
-    }
-  }
-})
-.factory('authService', function($http,$httpParamSerializerJQLike,$state,infoService,localStorageService) {
+.factory('authService', function($http,$httpParamSerializerJQLike,$state,$window,infoService,localStorageService) {
 
   return {
     login: function(datas){
@@ -145,9 +103,8 @@ angular.module('starter.services', [])
     })
     .then(function(data){
       if(data.data !== "false"){
-        console.log(data.data);
         localStorageService.set("userId", data.data[0].user);
-        if(localStorageService.get("user") === undefined)
+        if(localStorageService.get("user") === null)
         {
           localStorageService.set("user", data.data[0].user);
         }
@@ -178,21 +135,26 @@ angular.module('starter.services', [])
 
     });*/
     localStorageService.remove('userId');
-    localStorageService.remove('token');
+    localStorageService.remove('accessToken');
+    localStorageService.remove('user');
+    $window.location.reload();
     $state.go('login');
     },
     register : function(datas){
        $http({
       method: 'POST',
-      url: 'http://localhost/ensus/register.php',
+      url: 'http://crackas.esy.es/register.php',
       paramSerializer: '$httpParamSerializerJQLike',
       data:$httpParamSerializerJQLike(datas),
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     })
     .then(function(data){
-      if(data.data !== 'true'){
+        console.log(data.data);
+
+      if(data.data === 'true'){
+        console.log(data.data);
         localStorageService.set("userId", data.data[0].user);
-        if(localStorageService.get("user") === undefined)
+        if(localStorageService.get("user") === null)
         {
           localStorageService.set("user", data.data[0].user);
         }
@@ -204,53 +166,6 @@ angular.module('starter.services', [])
     });
     }
   }
-})
-.factory( function($http,$httpParamSerializerJQLike,$stateParams) {
-    return {
-      getAllMessages: function(){
-        var datas;
-        var data = {};
-        data.idsender = $cookies.get("userId");
-        data.idreceiver = $stateParams.id;
-        data.token = $cookies.get("accessToken");
-        return $http({
-      method: 'POST',
-      url: 'http://localhost/ensus/message.php',
-      paramSerializer: '$httpParamSerializerJQLike',
-      data:$httpParamSerializerJQLike(data),
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'}
-    });
-      },
-      getLastMessage: function(datas){
-        $http({
-      method: 'POST',
-      url: 'http://localhost/ensus/message.php',
-      paramSerializer: '$httpParamSerializerJQLike',
-      data:$httpParamSerializerJQLike(datas),
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'}
-    })
-    .then(function(data){
-    },function(){
-    });
-      },
-      sendMessage : function(datas){
-        $http({
-      method: 'POST',
-      url: 'http://localhost/ensus/sendmessage.php',
-      paramSerializer: '$httpParamSerializerJQLike',
-      data:$httpParamSerializerJQLike(datas),
-      withCredentials: true,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'}
-    })
-    .then(function(data){
-    },function(){
-    });
-      },
-      DeleteMessage : function(){}
-    }
 });
+
+
